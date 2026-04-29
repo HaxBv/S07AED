@@ -1862,7 +1862,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4a752336f776742a21b8712a271e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerPerPriority
-  entities: []
+  entities:
+  - {fileID: 1344823623}
+  - {fileID: 1609129371}
+  - {fileID: 449113395}
 --- !u!4 &1554813521
 Transform:
   m_ObjectHideFlags: 0
