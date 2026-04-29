@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManagerPerPriority : MonoBehaviour
@@ -19,10 +20,16 @@ public class GameManagerPerPriority : MonoBehaviour
     }
     void Start()
     {
-
     }
     [Button]
-   
+    public void AplicarLista()
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            Enqueue(entities[i]);
+        }
+    }
+
     /*[Button]
     public void OrderListPerID()
     {
@@ -37,9 +44,11 @@ public class GameManagerPerPriority : MonoBehaviour
     }*/
 
 
+    [Button]
     public void ChangePriority()
     {
-        Clear();
+        Clear(); 
+        
         if (!changePriority)
         {
             priorityQueue = new((a, b) => a.ID < b.ID);
@@ -50,6 +59,7 @@ public class GameManagerPerPriority : MonoBehaviour
             priorityQueue = new((a, b) => a.Speed > b.Speed);
             changePriority = false;
         }
+        AplicarLista();
     }
 
     [Button]
