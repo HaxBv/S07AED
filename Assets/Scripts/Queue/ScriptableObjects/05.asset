@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 4
   entityName: Quicksilver
   speed: 900
+  damage: 85
+  popularity: 5
+  sprite: {fileID: 21300000, guid: ffb8255fc77f477468bd063cf74021bc, type: 3}
+  material: {fileID: 2100000, guid: 6575ae8ffe1cb2f44a7089b827f41d72, type: 2}

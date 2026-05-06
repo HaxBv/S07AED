@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 2
   entityName: RayoMcQueen
   speed: 320
+  damage: 50
+  popularity: 2
+  sprite: {fileID: 21300000, guid: 8dbb128c89fdd334c84868ff474ecc3b, type: 3}
+  material: {fileID: 2100000, guid: 77cbb449c9aa9214f95067c10697a1c3, type: 2}

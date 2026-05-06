@@ -1,7 +1,16 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+
+public enum PriorityType
+{
+    Speed,
+    ID,
+    Attack,
+    Popularity,
+}
 
 public class GameManagerPerPriority : MonoBehaviour
 {
@@ -10,55 +19,60 @@ public class GameManagerPerPriority : MonoBehaviour
     public PriorityQueue<Entity> priorityQueue =
         new((a, b) => a.Speed > b.Speed);
 
-
+    private PriorityType currentPriority;
     public List<Entity> entities = new();
 
     private bool changePriority;
+
+    public Action OnApplyPositions;
+
     private void Awake()
     {
         Instance = this;
     }
+
     void Start()
     {
+        //AplicarLista();
     }
+
     [Button]
     public void AplicarLista()
     {
         for (int i = 0; i < entities.Count; i++)
         {
+            // Ordenar por prioridad
             Enqueue(entities[i]);
         }
-    }
 
-    /*[Button]
-    public void OrderListPerID()
-    {
-        priorityQueue = new((a, b) => a.ID < b.ID);
+        AplicarPosiciones();
     }
 
     [Button]
-    public void OrderListPerSpeed()
+    public void ChangePriority(PriorityType newPriorityType)
     {
         Clear();
-        priorityQueue = new((a, b) => a.Speed > b.Speed);
-    }*/
+        currentPriority = newPriorityType;
 
+        switch (currentPriority)
+        {
+            case PriorityType.Speed:
+                priorityQueue = new((a, b) => a.Speed > b.Speed);
+                break;
 
-    [Button]
-    public void ChangePriority()
-    {
-        Clear(); 
-        
-        if (!changePriority)
-        {
-            priorityQueue = new((a, b) => a.ID < b.ID);
-            changePriority = true;
+            case PriorityType.ID:
+                priorityQueue = new((a, b) => a.ID < b.ID);
+                break;
+
+            case PriorityType.Attack:
+                priorityQueue = new((a, b) => a.Damage > b.Damage);
+                break;
+
+            case PriorityType.Popularity:
+                priorityQueue = new((a, b) => a.Popularity < b.Popularity);
+                break;
         }
-        else
-        {
-            priorityQueue = new((a, b) => a.Speed > b.Speed);
-            changePriority = false;
-        }
+
         AplicarLista();
     }
 
@@ -66,12 +80,15 @@ public class GameManagerPerPriority : MonoBehaviour
     public void Enqueue(Entity entityStats)
     {
         priorityQueue.Enqueue(entityStats);
+        AplicarPosiciones();
     }
+
     [Button]
     public void Dequeue()
     {
         Debug.Log("Pase a ser atendido : " + priorityQueue.Dequeue());
     }
+
     [Button]
     public void Peek()
     {
@@ -88,5 +105,26 @@ public class GameManagerPerPriority : MonoBehaviour
     public void Count()
     {
         Debug.Log(priorityQueue.Count);
+    }
+
+    public void AplicarPosiciones()
+    {
+        float spacing = 5f;
+        float originZ = 0f;
+
+        priorityQueue.ApplyPositions((entity, index) =>
+        {
+            float newPosZ = originZ - (index * spacing);
+
+            entity.transform.position = new Vector3(
+                entity.transform.position.x,
+                entity.transform.position.y,
+                newPosZ
+            );
+
+            entity.PriorityIndex = index;
+        });
+
+        OnApplyPositions?.Invoke();
     }
 }

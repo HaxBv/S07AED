@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 5
   entityName: Sonic
   speed: 970
+  damage: 60
+  popularity: 1
+  sprite: {fileID: 21300000, guid: b5e741da0e5122b45b8671ac1e7b202d, type: 3}
+  material: {fileID: 2100000, guid: 54bbea16fcaa0d94ebd4511296998807, type: 2}

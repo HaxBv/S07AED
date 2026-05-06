@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 8
   entityName: Makkari
   speed: 860
+  damage: 90
+  popularity: 8
+  sprite: {fileID: 21300000, guid: 5f6e69e818797554d8b7eca60b9725a2, type: 3}
+  material: {fileID: 2100000, guid: 0e52171b2f3fc6548b2a59fbbbd81c73, type: 2}

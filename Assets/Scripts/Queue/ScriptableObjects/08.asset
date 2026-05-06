@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 7
   entityName: Correcaminos
   speed: 600
+  damage: 40
+  popularity: 4
+  sprite: {fileID: 21300000, guid: 082f4f1ebcee0a74cb827025f31ac844, type: 3}
+  material: {fileID: 2100000, guid: eb2c1f5cb1411884bb27e739e1796957, type: 2}

@@ -1,11 +1,9 @@
 using Sirenix.OdinInspector;
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIGameManager : MonoBehaviour
-{
+{/*
     public InputSystem_Actions inputs;
     public WindowManager wmanager = new ();
 
@@ -63,6 +61,34 @@ public class UIGameManager : MonoBehaviour
         Debug.Log(wmanager.Peek().window.name);
     }
     [Button]
-    public void Count() => Debug.Log(wmanager.Count);
+    public void Count() => Debug.Log(wmanager.Count);*/
+    public Image[] Imgs;
 
+
+    private void Start()
+    {
+
+        GameManagerPerPriority.Instance.OnApplyPositions += AplicarUI;
+    }
+    [Button]
+    public void AplicarUI()
+    {
+
+        float spacing = 150f;
+        float originY = 0f;
+
+
+        GameManagerPerPriority.Instance.priorityQueue.ApplyPositions((entity, index) =>
+        {
+            if (index >= Imgs.Length) return;
+
+            Imgs[index].sprite = entity.Sprite;
+
+            RectTransform rt = Imgs[index].rectTransform;
+
+            float y = originY - (index * spacing);
+
+            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, y);
+        });
+    }
 }

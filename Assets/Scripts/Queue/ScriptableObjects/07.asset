@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 6
   entityName: Speedy Gonzales
   speed: 560
+  damage: 35
+  popularity: 3
+  sprite: {fileID: 21300000, guid: 48401820d7e974a40a4dbf6701257a9e, type: 3}
+  material: {fileID: 2100000, guid: 76e064c625140794086c3f92b5276590, type: 2}

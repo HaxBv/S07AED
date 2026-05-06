@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 1
   entityName: "Carrer\xEDn"
   speed: 780
+  damage: 70
+  popularity: 9
+  sprite: {fileID: 21300000, guid: 531d22a07ad1c0c4197c302394787af9, type: 3}
+  material: {fileID: 2100000, guid: 51e0e046847726342ad6869e78a6ccf0, type: 2}

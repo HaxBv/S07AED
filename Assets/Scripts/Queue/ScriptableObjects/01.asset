@@ -15,3 +15,7 @@ MonoBehaviour:
   id: 0
   entityName: A-Train
   speed: 720
+  damage: 80
+  popularity: 7
+  sprite: {fileID: 21300000, guid: 70d9dc3c29dbee2469ab3c6061fb03d9, type: 3}
+  material: {fileID: 2100000, guid: 13b6386369dc26445beca2797c2fb041, type: 2}

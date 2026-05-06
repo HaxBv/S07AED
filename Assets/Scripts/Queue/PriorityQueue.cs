@@ -89,6 +89,18 @@ public class PriorityQueue<T>
     }
     #endregion
 
+    public void ApplyPositions(Action<T, int> onPosition)
+    {
+        QueueNode<T> current = head;
+        int index = 0;
+
+        while (current != null)
+        {
+            onPosition(current.Value, index);
+            current = current.Next;
+            index++;
+        }
+    }
     #region Getters
     public int Count => count;
     #endregion
